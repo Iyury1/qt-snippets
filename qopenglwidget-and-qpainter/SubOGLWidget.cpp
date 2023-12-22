@@ -42,8 +42,6 @@ void SubOGLWidget::implInitGL() {
     glDeleteShader(implVertexShader);
     glDeleteShader(implFragmentShader);
 
-
-    
     // setup vertex attribs and buffer
 
     glGenVertexArrays(1,&implVAO);
@@ -58,11 +56,7 @@ void SubOGLWidget::implInitGL() {
 void SubOGLWidget::implResizeGL() {}
 
 void SubOGLWidget::implPaintGL() {
-    std::cout << "painting spiral " << spiralEnd << std::endl;
-    for(int i = 0; i < spiralEnd; ++i)
-    {
-        std::cout << "(" << spiralVertices[i].x1 << ", " << spiralVertices[i].y1 << ") ";
-    }
+    // draw the archimedean spiral
     glUseProgram(implShaderProgram);
     glBindVertexArray(implVAO);
     glLineWidth(2.0);

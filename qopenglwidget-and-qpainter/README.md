@@ -6,9 +6,13 @@ At the beginning of paintGL, the QPainter class is constructed. Any OpenGL calls
 
 However, as soon as the QPainter and native painting methods are added, the program crashes with the exception "Access violation reading location 0x0000000000000000."
 
+This project was built with CMake on Windows 11 using Qt6.5.3 and msvc 2019.
+
 Without QPainter, the program draws an archimedean spiral on a gradient background.
 
-This project was built with CMake on Windows 11 using Qt6.5.3 and msvc 2019.
+The MainWindow contains a single Widget of type SubOGLWidget, which inherits from the base class BasedOGLWidget. The base class inherits from QOpenGLWidget and implements paintGL, resizeGL, and initializeGL. Each of these methods performs operations general to all BasedOGLWidgets, then calls a subclass specific method.
+
+The paintGL of BasedOGLWidget will construct a QPainter class if enabled, draw the background, then call implPaintGL which draws the spiral.
 
 # Build without QPainter
 
